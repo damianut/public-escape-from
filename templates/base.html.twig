@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='pl-PL'>
+	<head>
+    	<meta charset='utf-8'>
+  	    <meta name='viewport' content='initial-scale=1.0'>
+  	    <meta name='author' content='Damian Orzeszek'>
+        {% block description %}{% endblock description %}
+  	    <meta name='keywords' content='Escape From, gra'>
+    	<title>Escape From</title>
+  	    <link rel='shortcut icon' href='{{ asset("images/favicon/player.png") }}'>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+        {% block javascripts %}{% endblock javascripts %}
+        {% block stylesheets %}{% endblock stylesheets %}
+        {% block head_rest %}{% endblock head_rest %}
+    </head>
+    {% block body %}{% endblock body %}
+</html>

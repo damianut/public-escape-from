@@ -1,0 +1,11 @@
+<div class='border-custom-3 p-sm-1 margin-sm'>
+    <p class='font-weight-bold'>Wiadomość z serwera:</p>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+        <div class="flashes flash-{{ label }}">
+            <pre>{{ message }}</pre>
+        </div>
+        {% endfor %}
+    {% endfor %}
+    {% block redirect %}{% endblock redirect %}
+</div>

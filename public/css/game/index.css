@@ -1,0 +1,75 @@
+/*Style strony z grą:*/
+#game {
+  background-color: #F2F3F4;
+  width: 2000px;
+  height: 3700px;
+}
+
+#infoBox {
+  position: absolute;
+  border-width: 3px;
+  border-style: double;
+  width: 400px;
+  height: 600px;
+  overflow: scroll;
+}
+
+#infoBoxContainer {
+  position: absolute;
+  margin-top: 100px;
+  width: 400px;
+  height: 630px;
+}
+
+#clearInfoBox {
+  margin-top: 606px;
+  margin-left: 323px;
+}
+
+#gameArea {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 433px;
+  width: 480px;
+  height: 600px;
+  overflow: scroll;
+}
+
+#map {
+  position: absolute;
+  width: 1920px;
+  height: 2400px;
+  z-index: 0;
+}
+
+#tableWithImages {
+  position: absolute;
+  width: 1920px;
+  z-index: 1; 
+}
+
+
+/* Tworzenie wlasnej tabeli: */
+
+img.cell {
+  width: 40px;
+  height: 40px;
+}
+
+div.row {
+  height: 40px;
+}
+
+div.divCell {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+
+/**
+ * Elements
+ */
+form {
+  display: inline-block;   
+}
+	

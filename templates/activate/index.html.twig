@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}
+<meta name='description' content='Strona do aktywacji konta w grze Escape From'>
+{% endblock description %}
+
+{% block javascripts %}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+{% endblock javascripts %}
+
+{% block stylesheets %}
+<link rel='stylesheet' href='{{ asset("css/index.css") }}'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+{% endblock stylesheets %}
+
+{% block body %}
+    <body>{{ include('template_parts/flash-no-login-route.html.twig') }}</body>
+{% endblock body %}

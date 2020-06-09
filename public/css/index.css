@@ -1,0 +1,85 @@
+/*Style strony logowania i tworzenia konta: */
+* {
+  box-sizing: border-box;
+  margin: 0;   
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #F2F3F4;
+}
+
+.bg-register {
+  background-color: #ABEBC6;
+}
+
+.bg-login {
+  background-color: lightblue;
+}
+
+.bg-reset {
+  background-color: #ff000017;   
+}
+
+/*
+ * Border's styles
+ */
+.border-double-3 {
+  border: 3px double black;
+}
+
+.border-custom-3 {
+  border: 2px solid green;
+}
+
+.border-custom-4 {
+  border: 2px solid purple;   
+}
+
+/**
+ * Margin
+ */
+.margin-sm {
+  margin: 5px;   
+}
+
+/*
+ * Form's styles
+ */
+.w-custom {
+  width: 272px;
+}
+
+.go-right-create {
+  margin-left: 121px;
+}
+
+.go-right-login {
+  margin-left: 137px;
+}
+
+.float-right {
+  float: right;
+}
+
+/**
+ * Elements's styles
+ */
+div.free-space {
+  height: 12px;
+}
+
+p {
+  margin: 0;   
+}
+
+h4 {
+  text-align: center;
+  margin: 9px 0;  
+}

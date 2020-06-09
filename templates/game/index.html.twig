@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}
+<meta name='description' content='Gra Escape From'>
+{% endblock description %}
+
+{% block stylesheets %}
+<link rel='stylesheet' href='{{ asset("css/game/index.css") }}'>
+{% endblock stylesheets %}
+
+{% block body %}
+<body id="game">
+    <span>Hello {{ nick }}!</span>
+    {{ form(saveGameForm) }}<!-- Czy nie trzeba zmienić stylu tego formularza, na taki, jak mają buttony? -->
+    {{ form(logoutForm) }}<!-- Pytanie jak wyżej. -->
+    {{ form(loadGameForm) }}<!-- Jak wyżej. -->
+    <!-- Code for testing purposes
+    <button id='load_table'>table</button>
+    <button id='load_things'>things</button>
+    <button id='load_player'>player</button>
+    <button id='load_thingsNames'>thingsNames</button>
+    <button id='load_mobs'>Mobs</button>
+    <button id='moveMob'>Rusz moba</button>
+    <button id='stayMob'>Zatrzymaj moba</button>
+    -->
+    <span id='showTime'></span>
+    <img id='test'></img>
+    <div id='infoBoxContainer'>
+    	<div id='infoBox'>
+    		<p class='lineInInfoBox' id='1'>&nbsp;Witaj w oknie z komunikatami</p>
+            <p class='lineInInfoBox' id='2'>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                <span>{{ message }}</span>
+                {% endfor %}
+            {% endfor %}
+            </p>
+    	</div>
+    	<button id='clearInfoBox'>Usuń wszystkie komunikaty</button>
+    </div>
+    <div id='gameArea' tabindex='1'>
+    	<div id='map'>
+    		<img id ='mapReal'>
+    	</div>
+    	<div id='tableWithImages'>
+    	</div>
+    </div>
+    <div
+        id="player-game-data"
+        data-areas="{{ areas }}"
+        data-mobs="{{ mobs }}"
+        data-things="{{ things }}"
+        data-player-time="{{ playerTime }}"
+        data-player-mob="{{ playerMob }}"
+    ></div>
+    <script>
+    	"use strict";
+    	(function (uris, callback) {
+    	  if (!(uris instanceof Array) || uris.length < 6) {
+    	    console.log('Nie wczytano tablicy z adresami plików .js');
+    	    return;
+    	  }
+    	  (function addNewScript(i) {
+    	    let s = document.getElementsByTagName('script')[0];
+    	    let newScript = document.createElement('script');
+    	    newScript.src = uris[i];
+    	    s.parentElement.insertBefore(newScript, s);
+    	    if (uris[++i]) { 
+    	      newScript.onload = function(){addNewScript(i)};
+    	    } else if (typeof callback === 'function') {
+    	      newScript.onload = callback;
+    	    }
+    	  })(0);
+    	})([
+            '../js/index.js',
+            '../js/time.js',
+            '../js/transfer_data_from_php.js',
+            '../js/transfer_data_from_js.js',
+            '../js/prepare_game_area.js',
+            '../js/executed_functions.js'
+        ], console.log('Wczytano.'));
+    </script>
+</body>
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

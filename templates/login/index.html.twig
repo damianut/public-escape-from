@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}
+<meta name='description' content='Strona logowania do gry Escape From'>
+{% endblock description %}
+
+{% block javascripts %}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+{% endblock javascripts %}
+
+{% block stylesheets %}
+<link rel='stylesheet' href='{{ asset("css/index.css") }}'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+{% endblock stylesheets %}
+
+{% block body %}
+<body>
+    <div class='d-flex flex-wrap flex-column p-1'>
+        <div id='infoForUser' class='border-double-3 w-100'>
+             <h4>Witaj na stronie z grą Escape From!</h4>
+             <p>W celu utworzenia konta, wpisz w bloku o zielonym tle swój e-mail, wymyślony nick i hasło, a następnie naciśnij przycisk 'Zarejestruj'.</p>
+             <p>Nick może składać się wyłącznie z liter, cyfr i znaku '_'.</p>
+             <p>Hasło może składać się wyłącznie z liter, cyfr i znaków: _!@#</p>
+             <div class="free-space"></div>
+             <p>Jeśli posiadasz już konto, to możesz się zalogować wpisując w bloku o niebieskim tle nick i hasło podane w trakcie rejestracji, a następnie klikając przycisk 'Zaloguj'.</p>
+             <div class="free-space"></div>
+             <p>Możesz też zresetować hasło, wpisując swój e-mail w bloku o jasnoróżowy tle i klikając 'Resetuj'. Wysłany zostanie Tobie wtedy link do resetowania hasła.</p>
+             <div class="free-space"></div>
+             <p>Po naciśnięciu przycisku dowolnego z trzech wymienionych przycisków. pojawią się komunikaty w  jednym z poniższych trzech bloków lub na dole strony informujące o wyniku żądanej operacji.</p>
+        </div>
+        <div class='border-double-3 w-custom mt-1 p-1 bg-register'>
+            {{ form_start(registerForm) }}
+                <div class="w-100">
+                    {{ form_label(registerForm.email) }}
+                    {{ form_errors(registerForm.email) }}
+                    {{ form_widget(registerForm.email, {"attr": {"class": "float-right"}}) }}
+                    {{ form_help(registerForm.email) }}
+                </div>
+                <div class="w-100">
+                    {{ form_label(registerForm.nick) }}
+                    {{ form_errors(registerForm.nick) }}
+                    {{ form_widget(registerForm.nick, {"attr": {"class": "float-right"}}) }}
+                    {{ form_help(registerForm.nick) }}
+                </div>
+                <div class="w-100">
+                    {{ form_label(registerForm.password) }}
+                    {{ form_errors(registerForm.password) }}
+                    {{ form_widget(registerForm.password, {"attr": {"class": "float-right"}}) }}
+                    {{ form_help(registerForm.password) }}
+                </div>
+                <div class="w-100">
+                    {{ form_row(registerForm.submit, {"attr": {"class": "float-right"}}) }}
+                </div>
+            {{ form_end(registerForm) }}
+        </div>
+        <div class='border-double-3 w-custom mt-1 p-1 bg-login'>
+            {{ form_start(loginForm) }}
+                <div class="w-100">
+                    {{ form_label(loginForm.nick) }}
+                    {{ form_errors(loginForm.nick) }}
+                    {{ form_widget(loginForm.nick, {"attr": {"class": "float-right"}}) }}
+                    {{ form_help(loginForm.nick) }}
+                </div>
+                <div class="w-100">
+                    {{ form_label(loginForm.password) }}
+                    {{ form_errors(loginForm.password) }}
+                    {{ form_widget(loginForm.password, {"attr": {"class": "float-right"}}) }}
+                    {{ form_help(loginForm.password) }}
+                </div>
+                <div class="w-100">
+                    {{ form_row(loginForm.submit, {"attr": {"class": "float-right"}}) }}
+                </div>
+            {{ form_end(loginForm) }}
+        </div>
+        <div class='border-double-3 w-custom mt-1 p-1 bg-reset'>
+            {{ form_start(resetForm) }}
+                <div class="w-100">
+                    {{ form_label(resetForm.email) }}
+                    {{ form_errors(resetForm.email) }}
+                    {{ form_widget(resetForm.email, {"attr": {"class": "float-right"}}) }}
+                    {{ form_help(resetForm.email) }}
+                </div>
+                <div class="w-100">
+                    {{ form_row(resetForm.submit, {"attr": {"class": "float-right"}}) }}
+                </div>
+            {{ form_end(resetForm) }}
+        </div>
+        <div id='messageFromPhp' class='mt-2 w-100'>
+            {{ include('template_parts/flash.html.twig') }}
+        </div>
+    </div>
+</body>
+{% endblock body %}

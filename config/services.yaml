@@ -1,0 +1,89 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    #Email sending:
+    app.mail.sender: 'digers.damorz@gmail.com'
+    app.mail.fail: 'E-mail nie został wysłany. Skontaktuj się z administratorem.'
+    app.mail.log.fail: 'Email do użytkownika nie został wysłany.'
+    
+    #Creating account:
+    app.acc.busy: 'Podany e-mail i/lub nick jest już zajęty.'
+    app.acc.pwd.404: 'Hasło nie może być puste.'
+    app.acc.pwd.403: 'Podane hasło zawiera niedozwolone znaki. Może składać się ono wyłącznie z liter, cyfr oraz znaków: _!@#'
+    app.acc.created.email.title: 'Aktywuj konto w grze Escape From'
+    app.acc.created.email.content: 'Witaj! Właśnie utworzyliśmy Twoje konto w grze Escape From. Aby je aktywować, kliknij następujący link: '
+    app.acc.created.flash: 'Utworzono konto! Aby je aktywować, kliknij link wysłany e-mailem na podany przez Ciebie adres e-mail w trakcie rejestracji.'
+    app.acc.confirm.email.fail: 'E-mail z linkiem aktywacyjnym nie został wysłany.'
+    
+    #Activating account:
+    app.acc.activate.1: 'Twoje konto zostało aktywowane! Wpisz e-mail i hasło, aby się zalogować'
+    app.acc.activate.0: 'Procedura aktywowania nie powiodła się. Skontaktuj się z administratorem'
+    app.acc.activate.token.404: 'Twój token aktywacyjny został już użyty albo nie został utworzony.'
+    
+    #Login account:
+    app.acc.attempts: 3
+    app.acc.login.404: 'Brak konta o podanym nicku.'
+    app.acc.login.403: 'Podany nick zawiera niedozwolone znaki. Może składać się on wyłącznie z liter, cyfr oraz znaku "_"'
+    app.acc.pwd.fail: 'Podano złe hasło.'
+    app.acc.logged: 'Konto jest już zalogowane na innej przeglądarce lub urządzeniu. Wyloguj się lub poczekaj do 10 minut, aby się zalogować - o ile konto nie będzie przez ten czas aktywne.'
+    app.acc.blocked: 'Konto jest zablokowane. Aby je odblokować, kliknij na link do odblokowania lub aktywacji konta wysłany na email podany w trakcie rejestracji.'
+    #Banning account:
+    app.acc.banned.msg.title: 'Escape From: konto zostało zablokowane.'
+    app.acc.banned.msg: 'Konto zostało zablokowane. W celu jego odblokowania, kliknij następujący link: '
+    app.acc.banned.email: 'Konto zostało zablokowane. W celu jego odblokowania naciśnij link wysłany na adres e-mail przypisany do konta.'
+    #Enabling account:
+    app.acc.enable.1: 'Twoje konto zostało odblokowane! Wpisz e-mail i hasło, aby się zalogować'
+    app.acc.enable.0: 'Procedura odblokowania nie powiodła się. Skontaktuj się z administratorem'
+    app.acc.enable.token.404: 'Twój token do odblokowania konta został już użyty albo nie został utworzony.'
+
+    #Game:
+    app.acc.login.none: 'Żaden gracz nie jest tu zalogowany.'
+    
+    #Reset account's password:
+    app.acc.404: 'Brak konta o podanym adresie e-mail'
+    app.acc.reset.email.title: 'Resetowanie hasła w Escape From'
+    app.acc.reset.email.content: 'Witaj! Aby zresetować hasło, kliknij następujący link:'
+    app.acc.reset.flash: 'Link do zresetowania hasła został wysłany na podany adres e-mail.'
+    app.acc.reset.email.fail: 'E-mail z linkiem do zresetowania hasła nie został wysłany.'
+    app.acc.reset.exist: 'Link do resetowania hasła został już wygenerowany dla tego konta.'
+    app.acc.reset.done: 'Hasło zostało zmienione'
+    app.acc.reset.fail: 'Hasło nie zostało zmienione. Błąd wewnętrzny serwera.'
+
+    #Logout:
+    app.acc.logout.none: 'Nikt nie jest zalogowany, nie można nikogo wylogować.'
+    app.acc.logout.200: 'Wylogowano się!'
+    
+    #Game saving:
+    app.save.200: '[Zapisywanie gry..]: Gra zapisana pomyślnie.'
+    app.save.fail: '[Zapisywanie gry..]: Dane z gry są nieprawidłowe.'
+    
+    #Violations messages:
+    app.token: 'Token jest niepoprawny lub pusty.'
+    app.player_time: 'Dane o czasie gracza są niepoprawne.'
+    
+    #Test:
+    app.test: 'Test'
+      
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
