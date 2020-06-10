@@ -90,6 +90,14 @@ class Entities
   }
   
   /**
+   * Create instance of Mobs entity with default values.
+   */
+  private function createMobs(): Mobs
+  {
+    return clone $this->getDefaultEntity(new Mobs());
+  }
+  
+  /**
    * Create instance of Things entity with default values.
    */
   private function createThings(): Things
@@ -98,13 +106,13 @@ class Entities
   }
   
   /**
-   * Create instance of Mobs entity with default values.
+   * Create instance of PlayerMob entity with default values.
    */
-  private function createMobs(): Mobs
+  private function createPlayerMob(): PlayerMob
   {
-    return clone $this->getDefaultEntity(new Mobs());
+    return clone $this->getDefaultEntity(new PlayerMob());   
   }
-  
+   
   /**
    * Create instance of Game entity with default values.
    * 
@@ -116,10 +124,12 @@ class Entities
     $game->setPlayerTime('W1D1H21M00');
     $areas = $this->createAreas();
     $game->setAreas($areas);
-    $things = $this->createThings();
-    $game->setThings($things);
     $mobs = $this->createMobs();
     $game->setMobs($mobs);
+    $things = $this->createThings();
+    $game->setThings($things);
+    $playerMob = $this->createPlayerMob();
+    $game->setPlayerMob($playerMob);
     
     return $game;
   }

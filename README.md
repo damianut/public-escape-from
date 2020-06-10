@@ -1,8 +1,8 @@
 Escape From game.
 
-This project is site for some exploration group from Zachodniopomorskie.
-To see site fulfill requirements and act in accordance to below instruction
-of installation.
+Partially created game.
+The player's movement controlling is described in point .4.
+Explore the game world and enjoy the eyes with beautiful graphics!
 
 .1. Requirements:
   .a. Symfony
@@ -43,5 +43,10 @@ of installation.
       the port that is listening by Symfony server and check, that site works.
   .c. Try to create account, log in account and reset password. In this purpose
       go to `http://localhost:8000/` (if your port is 8000), fill forms and
-      send requests. 
+      send requests.
+      
+.4. Player control:
+  Walking in straight lines:   w s a d 
+  Walking diagonally:          q e z c
+  Rotating in place:           W S A D (press CAPS LOCK and w, s, a, d)
 /*............................................................................*/

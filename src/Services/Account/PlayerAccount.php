@@ -146,7 +146,7 @@ class PlayerAccount
   {
     $players = $this->getPlayerByNick($nick);
     
-    return [] === $players ?? !$players[0]->getEnabled();
+    return !$players[0]->getEnabled();
   }
   
   /**
